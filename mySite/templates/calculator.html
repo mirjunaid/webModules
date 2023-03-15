@@ -1,0 +1,28 @@
+{% include 'shortcut/base.html' %}
+
+{% block content %}
+
+    <div class="container" style="background-color: darkolivegreen; border-radius: 8px;">
+        <br/>
+        <div class="row">
+            {% for calculator in calculators %}
+                <div class="col-sm-3 mb-3">
+                    <div class="card text-bg-primary mb-3">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h4>{{calculator.title}}</h4>
+                                <div class="card-text">
+                                    <p>{{calculator.definition|truncatewords:10}}</p>
+                                    <p>{{ calculator.formulas|truncatewords:10 }}</p>
+                                    <hr>
+                                    <a href="smartCalc/{{calculator.id}}" class="btn btn-warning"><strong>Visit</strong></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock%}

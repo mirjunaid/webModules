@@ -1,0 +1,47 @@
+{% include 'shortcut/base.html'%}
+
+
+{% block content %}
+    <div class="container" style="border-style: groove; border-color: rgb(35, 5, 63); border-radius: 8px;  background-color: rgb(118, 118, 202)">
+        <br/>
+        <div class="row">
+            <div class="col-4">
+                <h5>Definition and a brief intro about the {{ calculators.title }}</h5>
+                <p>{{ calculators.definition}}</p>
+            </div>
+            <div class="col-4" style="border-style: groove; border-color: rgb(35, 5, 63); border-radius: 8px;  background-color: rgb(233, 227, 227)">
+                {% if calculators.title == 'Cylinder' %}
+                    <h5>Enter the details of the {{ calculators.title }} to find the required value</h5>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4"></legend>     
+                        </fieldset>
+                        <div class="form-group">
+                            <button class="btn btn-outline-info" type="submit">Login</button>
+                        </div>
+                    </form>
+                {% elif calculators.title == 'Cuboid' %}
+                    <br/>
+                    <h5>Enter the details of the {{ calculators.title }} to find the required value</h5>
+                    <form method="POST" name="cuboid" action="{% url 'volume' %}">
+                        {% csrf_token %}
+                        <h3>Enter the length of the given cuboid: </h3>
+                        <input type="number" step="any" name="length">
+                        <h3>Enter the breadth of the given cuboid: </h3>
+                        <input type="number" step="any" name="breadth">
+                        <h3>Enter the height of the given cuboid: </h3>
+                        <input type="number" step="any" name="height"><br/><br/>
+                        <input type="submit" class="btn btn-primary" value="Calculate">
+                    </form>
+                    {% if  %}                               
+                {% endif %}
+            </div>
+            <div class="col-4">
+                <h5>Important formulas to remember about the {{ calculators.title }}</h5>
+                <p>{{ calculators.formulas }}</p>
+            </div>
+        </div>
+        <br/>
+    </div>
+{% endblock %}
